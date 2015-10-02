@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.luknja.curlinator" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.luknja.curlinator" version="0.9.0b" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Curlinator</name>
     <description>
-        Simple calculator for calculating curling last shot draw distances.
+        Simple calculator for calculating last shot draw distancesi in curling.
     </description>
     <author email="tomaz.toplak@gmail.com" href="http://tomymmx.tumblr.com">
         Tomaž Toplak
