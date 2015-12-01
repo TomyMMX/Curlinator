@@ -8,6 +8,15 @@ $(document).ready(function() {
         $(this).select();
     });
     
+    //help for some stupid samsung devices
+    //add/remove decimal seperator before last char
+    $("input").on("doubletap", function () {
+        //addRemovePoint($(this));
+    });
+    $("input").dblclick( function () {
+        //addRemovePoint($(this));
+    });
+
     //redraw the graphic if window resizes
     window.onresize = function(event) {
         if(prevStoneX!=''){
@@ -15,6 +24,17 @@ $(document).ready(function() {
         }    
     };
 });
+
+function addRemovePoint(element){
+    var curVal = element.val().replace(",", ".");
+    if(curVal.indexOf(".")>-1){
+        element.val(curVal.replace(".",""));
+    }else if(curVal.length > 1){
+        var l = curVal.length;
+        curVal = curVal.slice(0,l-1)+"."+curVal.slice(l-1);
+        element.val(curVal);
+    }
+}
 
 function DrawStoneLocation(stoneX, stoneY){
     //so we have the calculation if we have to redraw
@@ -34,7 +54,7 @@ function DrawStoneLocation(stoneX, stoneY){
     DrawCircle(context, radius, '#d2271a', centerX, centerY); 
     DrawCircle(context, radius/3, 'white', centerX, centerY); 
         
-    //center and T lines
+    //centen and T lines
     DrawLine(context, canvas.width/2, 0, canvas.width/2, canvas.width, 4, '#111');
     DrawLine(context, canvas.width, canvas.width/2, 0, canvas.width/2, 4, '#111');
 
@@ -107,7 +127,7 @@ function SimpleLSDCalculation(){
     var fromPin = parseFloat(fromPinText);
 	
     //just add the stone radius
-    var	res = fromPin*10 + stoneRadius;
+    var	res = fromPin + stoneRadius;
 	
     res = (res/10).toFixed(1);
     
@@ -125,8 +145,8 @@ function StartLSDCalculaton(){
 	var from6Text = $("#from6").val().replace(",", ".");	
     
     //measured distances in mm
-	var from3 = parseFloat(from3Text)*10;
-	var from6 = parseFloat(from6Text)*10;
+	var from3 = parseFloat(from3Text);
+	var from6 = parseFloat(from6Text);
     var res = CalculateLSDDistance(from6, from3);
 
     if(res.x=="NaN"){
